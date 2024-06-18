@@ -1,0 +1,60 @@
+## Creating a graphing calculator using turles
+import turtle
+import numpy as np
+tess = turtle.Turtle()
+wn = turtle.Screen()
+## Set up the screen
+def createScreen(width, height, title):
+    wn.setup(width, height)
+    wn.bgcolor('black')
+    wn.title(title)
+
+## Set up our turtle
+def createTess(color, size):
+    tess.color('black')
+    tess.left(180)
+    tess.forward(400)
+    tess.left(180)
+    tess.color(color)
+    tess.pensize(size)
+## Instruct tess to draw a graph
+def drawGraph():
+    pass
+
+## Run all the functions above
+createScreen(1000, 700, 'Graphing Calculator')
+createTess('white', 5)
+
+##Get a series of numbers to graph
+
+def xs(x1, x2, y1, y2):
+    dy = y2 - y1
+    dx = x2 - x1
+    m = np.divide(dy, dx) # This is the slope
+    tess.write(m)
+    if dx > 0 and dy > 0:
+        while (dx > 0):
+            tess.forward(1)
+            tess.left(90)
+            tess.forward(m)
+            tess.right(90)
+            dx = dx - 1
+        
+    elif(dx < 0 and dy > 0):
+        tess.left(180)
+        while (dx <0):
+            tess.forward(1)
+            tess.right(90)
+            tess.forward(m)
+            tess.left(90)
+            dx = dx + 1
+    elif(dx > 0 and dy < 0):
+        while (dx < 0):
+            tess.forward(1)
+            tess.right(90)
+            tess.forward(m)
+            tess.left(90)
+            dx = dx - 1
+
+xs(23, 1, 2, 23)
+wn.mainloop() 
