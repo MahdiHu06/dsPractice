@@ -14,16 +14,7 @@ def createTess(color, size):
     tess.color(color)
     tess.pensize(size)
 ## Instruct tess to draw a graph
-def drawGraph():
-    pass
-
-## Run all the functions above
-createScreen(1000, 700, 'Graphing Calculator')
-createTess('white', 5)
-
-##Get a series of numbers to graph
-
-def xs(x1, x2, y1, y2):
+def drawGraph(x1, y1, x2, y2):
     dy = y2 - y1
     dx = x2 - x1
     m = np.divide(dy, dx) # This is the slope
@@ -60,6 +51,10 @@ def xs(x1, x2, y1, y2):
             tess.right(90)
             dx = dx + 1
 
+## Run all the functions above
+createScreen(1000, 700, 'Graphing Calculator')
+createTess('white', 5)
+drawGraph(23, 1, 2, 23)
 
-xs(23, 1, 2, 23)
+## wait for user to close tab
 wn.mainloop() 
