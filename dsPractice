@@ -14,46 +14,29 @@ def createTess(color, size):
     tess.color(color)
     tess.pensize(size)
 ## Instruct tess to draw a graph
-def drawGraph(x1, y1, x2, y2):
-    dy = y2 - y1
-    dx = x2 - x1
-    m = np.divide(dy, dx) # This is the slope
-    a = 10
-    if dx > 0 and dy > 0:
-        while (dx > 0):
-            tess.forward(a)
-            tess.left(90)
-            tess.forward(m)
-            tess.right(90)
-            dx = dx - 1
-        
-    elif(dx < 0 and dy > 0):
-        tess.left(180)
-        while (dx <0):
-            tess.forward(a)
-            tess.right(90)
-            tess.forward(m)
-            tess.left(90)
-            dx = dx + 1
-    elif(dx > 0 and dy < 0):
-        while (dx < 0):
-            tess.forward(a)
-            tess.right(90)
-            tess.forward(m)
-            tess.left(90)
-            dx = dx - 1
-    elif(dx < 0 and dy < 0):
-        tess.left(180)
-        while (dx < 0):
-            tess.forward(a)
+def drawPolyGraph(a, b, c, d):
+    xsq = float(a)
+    x = float(b)
+    sy = float(c)
+    dx = 1
+    time = 6
+    if (a > 0 and b > 0):
+        while (time > 0):
+            da = a * dx
+            d2a = da * dx
+            db = np.multiply(b, dx)
+            m = float(d2a + db)
+       
+        #start moving
+            tess.forward(1)
             tess.left(90)
             tess.forward(m)
             tess.right(90)
             dx = dx + 1
-
+            time = time - 1
 ## Run all the functions above
 createScreen(1000, 700, 'Graphing Calculator')
 createTess('white', 5)
-drawGraph(23, 1, 2, 23)
+drawPolyGraph(2, 1, 1, 1)
 ## wait for user to close tab
 wn.mainloop() 
