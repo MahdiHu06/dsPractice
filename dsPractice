@@ -11,10 +11,6 @@ def createScreen(width, height, title):
 
 ## Set up our turtle
 def createTess(color, size):
-    tess.color('black')
-    tess.left(180)
-    tess.forward(400)
-    tess.left(180)
     tess.color(color)
     tess.pensize(size)
 ## Instruct tess to draw a graph
@@ -31,10 +27,10 @@ def xs(x1, x2, y1, y2):
     dy = y2 - y1
     dx = x2 - x1
     m = np.divide(dy, dx) # This is the slope
-    tess.write(m)
+    a = 10
     if dx > 0 and dy > 0:
         while (dx > 0):
-            tess.forward(1)
+            tess.forward(a)
             tess.left(90)
             tess.forward(m)
             tess.right(90)
@@ -43,18 +39,27 @@ def xs(x1, x2, y1, y2):
     elif(dx < 0 and dy > 0):
         tess.left(180)
         while (dx <0):
-            tess.forward(1)
+            tess.forward(a)
             tess.right(90)
             tess.forward(m)
             tess.left(90)
             dx = dx + 1
     elif(dx > 0 and dy < 0):
         while (dx < 0):
-            tess.forward(1)
+            tess.forward(a)
             tess.right(90)
             tess.forward(m)
             tess.left(90)
             dx = dx - 1
+    elif(dx < 0 and dy < 0):
+        tess.left(180)
+        while (dx < 0):
+            tess.forward(a)
+            tess.left(90)
+            tess.forward(m)
+            tess.right(90)
+            dx = dx + 1
+
 
 xs(23, 1, 2, 23)
 wn.mainloop() 
