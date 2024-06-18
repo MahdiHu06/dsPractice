@@ -55,6 +55,5 @@ def drawGraph(x1, y1, x2, y2):
 createScreen(1000, 700, 'Graphing Calculator')
 createTess('white', 5)
 drawGraph(23, 1, 2, 23)
-
 ## wait for user to close tab
 wn.mainloop() 
