@@ -10,8 +10,7 @@ def createScreen(width, height, title):
     wn.title(title)
 
 ## Set up our turtle
-def createTess(color, size):
-    tess.color(color)
+def createTess(size):
     tess.pensize(size)
 ## Instruct tess to draw a graph
 def drawPolyGraph(a, b, c, d):
@@ -19,24 +18,32 @@ def drawPolyGraph(a, b, c, d):
     x = float(b)
     sy = float(c)
     dx = 1
-    time = 6
-    if (a > 0 and b > 0):
-        while (time > 0):
-            da = a * dx
-            d2a = da * dx
-            db = np.multiply(b, dx)
-            m = float(d2a + db)
+    time = 10
+    ## Get in position
+    tess.color('black')
+    tess.left(90)
+    tess.forward(sy)
+    tess.right(90)
+    tess.color('white')
+    ##Draw the graph
+    while (time > 0):
+        da = a * dx
+        d2a = da * dx
+        db = np.multiply(b, dx)
+        m = float(d2a + db)
        
-        #start moving
-            tess.forward(1)
-            tess.left(90)
-            tess.forward(m)
-            tess.right(90)
-            dx = dx + 1
-            time = time - 1
+    #start moving
+        tess.forward(0.9)
+        tess.left(90)
+        tess.forward(m)
+        tess.right(90)
+        dx = dx + 1
+        time = time - 1
+    if time == 0:
+        tess.write(m)
 ## Run all the functions above
 createScreen(1000, 700, 'Graphing Calculator')
-createTess('white', 5)
-drawPolyGraph(2, 1, 1, 1)
+createTess(1)
+drawPolyGraph(3, -12, -270, 1)
 ## wait for user to close tab
 wn.mainloop() 
